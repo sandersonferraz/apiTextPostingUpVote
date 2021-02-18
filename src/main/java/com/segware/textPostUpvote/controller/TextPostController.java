@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class TextPostController {
 
     @Autowired
     TextPostService textPostService;
 
-    @GetMapping
-    @RequestMapping("/")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public List<TextPost> findAll() {
         return textPostService.findAll();
