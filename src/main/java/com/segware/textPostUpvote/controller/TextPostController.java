@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class TextPostController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class TextPostController {
         return textPostService.create(textPost);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TextPost update(@RequestBody TextPost newTextPost) {
         TextPost textPost = textPostService.findById(newTextPost.getId());
@@ -42,9 +43,9 @@ public class TextPostController {
         return textPost;
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String delete(@RequestBody String id) {
+    public String delete(@PathVariable String id) {
         textPostService.delete(id);
         return id;
     }
@@ -56,7 +57,7 @@ public class TextPostController {
         return id;
     }
 
-    @GetMapping("/downVote/{id}")
+    @GetMapping("/downvote/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String downVote(@PathVariable String id){
         textPostService.downVoteText(id);

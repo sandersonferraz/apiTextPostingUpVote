@@ -1,4 +1,4 @@
-package com.segware.textPostUpvote;
+package com.segware.textPostUpvote.repository;
 
 import com.segware.textPostUpvote.model.TextPost;
 import org.springframework.data.mongodb.repository.MongoRepository;

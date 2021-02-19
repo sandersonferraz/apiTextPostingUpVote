@@ -1,6 +1,6 @@
 package com.segware.textPostUpvote.service;
 
-import com.segware.textPostUpvote.TextPostRepository;
+import com.segware.textPostUpvote.repository.TextPostRepository;
 import com.segware.textPostUpvote.model.TextPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,6 @@ public class TextPostService {
 
     public TextPost update(@RequestBody TextPost updateText) {
         TextPost text = textPostRepository.findById(updateText.getId()).orElse(null);
-        assert text != null;
         text.setText(updateText.getText());
         textPostRepository.save(text);
         return text;
@@ -45,12 +44,14 @@ public class TextPostService {
     public String upvoteText(@PathVariable String id) {
         TextPost textPost = textPostRepository.findById(id).orElse(null);
         textPost.setVote(textPost.getVote() + 1);
+        textPostRepository.save(textPost);
         return id;
 
     }
     public String downVoteText(@PathVariable String id) {
         TextPost textPost = textPostRepository.findById(id).orElse(null);
         textPost.setVote(textPost.getVote() - 1);
+        textPostRepository.save(textPost);
         return id;
 
     }

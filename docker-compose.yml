@@ -1,7 +1,16 @@
 version: '3'
 services:
+  reactjs-ui:
+    build:
+      context: ./app
+    ports:
+      - "3000:3000"
+    container_name: reactjs-ui
+    stdin_open: true
+    volumes:
+      - ./my-app:/usr/src/app/app
+      - /usr/src/app/my-app/node_modules
   mongodb:
     image: mongo:latest
-    container_name: mongodb
     ports:
       - "27017:27017"

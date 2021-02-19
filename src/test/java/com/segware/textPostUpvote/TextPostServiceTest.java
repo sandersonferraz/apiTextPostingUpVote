@@ -2,6 +2,7 @@ package com.segware.textPostUpvote;
 
 
 import com.segware.textPostUpvote.model.TextPost;
+import com.segware.textPostUpvote.repository.TextPostRepository;
 import com.segware.textPostUpvote.service.TextPostService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
