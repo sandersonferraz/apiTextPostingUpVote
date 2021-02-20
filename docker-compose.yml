@@ -1,16 +1,14 @@
-version: '3'
+version: "3"
 services:
-  reactjs-ui:
+  app-client:
     build:
       context: ./app
     ports:
       - "3000:3000"
-    container_name: reactjs-ui
+    container_name: app-client
     stdin_open: true
     volumes:
-      - ./my-app:/usr/src/app/app
-      - /usr/src/app/my-app/node_modules
-  mongodb:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
+      - ./app:/usr/src/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

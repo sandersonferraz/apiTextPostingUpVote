@@ -1,10 +1,13 @@
 FROM node:14
 
-WORKDIR /usr/src/app/app
+WORKDIR /usr/src/app
+
+ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package*.json ./
 
-RUN npm install
+
+RUN npm install --silent
 
 EXPOSE 3000
 
